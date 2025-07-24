@@ -1,74 +1,160 @@
 <!DOCTYPE html>
-<html>
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Security Terminal</title>
+    <title>نظام الأمان المتقدم - Tower of Hanoi</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Standby Screen -->
+    <!-- شاشة الاستعداد -->
     <div id="standbyScreen" class="screen active">
-        <div class="terminal-frame">
-            <div class="scan-lines"></div>
-            <div class="terminal-content">
-                <div class="logo">SECURE-NET</div>
-                <div class="status">SYSTEM STANDBY</div>
-                <div class="cursor-blink">_</div>
+        <div class="standby-container">
+            <div class="hologram-effect"></div>
+            <div class="terminal-frame">
+                <div class="scan-lines"></div>
+                <div class="glitch-overlay"></div>
+                <div class="terminal-content">
+                    <div class="logo-container">
+                        <div class="logo-glow"></div>
+                        <div class="logo">QUANTUM-SEC</div>
+                        <div class="logo-subtitle">نظام الحماية المتقدم</div>
+                    </div>
+                    <div class="status-container">
+                        <div class="status-indicator"></div>
+                        <div class="status">نظام في وضع الاستعداد</div>
+                        <div class="status-dots">
+                            <span></span><span></span><span></span>
+                        </div>
+                    </div>
+                    <div class="cursor-blink">█</div>
+                </div>
             </div>
         </div>
     </div>
 
-    <!-- Hack Game Screen -->
+    <!-- شاشة اللعبة -->
     <div id="hackScreen" class="screen">
         <div class="hack-container">
+            <div class="background-grid"></div>
             <div class="hack-header">
-                <div class="progress-container">
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progressBar"></div>
+                <div class="header-title">
+                    <span class="hack-icon">⚡</span>
+                    تجاوز نظام الأمان
+                    <span class="hack-icon">⚡</span>
+                </div>
+                <div class="progress-section">
+                    <div class="progress-label">مستوى التقدم</div>
+                    <div class="progress-container">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressBar">
+                                <div class="progress-shine"></div>
+                            </div>
+                        </div>
+                        <div class="progress-percentage" id="progressText">0%</div>
                     </div>
-                    <div class="progress-text">BYPASSING SECURITY</div>
                 </div>
             </div>
 
             <div class="game-area">
-                <div class="towers-grid">
-                    <div class="tower" id="tower1" data-tower="0">
-                        <div class="tower-base"></div>
-                        <div class="tower-rod"></div>
+                <div class="objective-banner">
+                    <div class="objective-icon">🎯</div>
+                    <div class="objective-text">انقل جميع الأقراص إلى البرج الأيمن</div>
+                    <div class="objective-hint">اضغط على الأقراص أو الأبراج للحركة</div>
+                </div>
+
+                <div class="towers-container">
+                    <div class="tower-wrapper">
+                        <div class="tower" id="tower1" data-tower="0">
+                            <div class="tower-label">البرج الأول</div>
+                            <div class="tower-structure">
+                                <div class="tower-base"></div>
+                                <div class="tower-rod"></div>
+                                <div class="tower-platform"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="tower" id="tower2" data-tower="1">
-                        <div class="tower-base"></div>
-                        <div class="tower-rod"></div>
+                    
+                    <div class="tower-wrapper">
+                        <div class="tower" id="tower2" data-tower="1">
+                            <div class="tower-label">البرج الثاني</div>
+                            <div class="tower-structure">
+                                <div class="tower-base"></div>
+                                <div class="tower-rod"></div>
+                                <div class="tower-platform"></div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="tower" id="tower3" data-tower="2">
-                        <div class="tower-base"></div>
-                        <div class="tower-rod"></div>
+                    
+                    <div class="tower-wrapper">
+                        <div class="tower" id="tower3" data-tower="2">
+                            <div class="tower-label">البرج الهدف</div>
+                            <div class="tower-structure">
+                                <div class="tower-base target"></div>
+                                <div class="tower-rod target"></div>
+                                <div class="tower-platform target"></div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <div class="objective">
-                    MOVE ALL BLOCKS TO RIGHT TOWER
+                <div class="game-info">
+                    <div class="info-item">
+                        <span class="info-label">عدد الحركات:</span>
+                        <span class="info-value" id="moveCounter">0</span>
+                    </div>
+                    <div class="info-item">
+                        <span class="info-label">الوقت المتبقي:</span>
+                        <span class="info-value" id="timeCounter">60s</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Success Screen -->
+    <!-- شاشة النجاح -->
     <div id="successScreen" class="screen">
         <div class="result-container success">
-            <div class="result-icon">✓</div>
-            <div class="result-title">ACCESS GRANTED</div>
-            <div class="result-subtitle">Security bypassed successfully</div>
+            <div class="result-background"></div>
+            <div class="success-particles"></div>
+            <div class="result-content">
+                <div class="result-icon">
+                    <div class="icon-glow"></div>
+                    ✓
+                </div>
+                <div class="result-title">تم تجاوز النظام بنجاح</div>
+                <div class="result-subtitle">تم منح الوصول الكامل</div>
+                <div class="result-stats">
+                    <div class="stat-item">
+                        <span class="stat-value" id="finalMoves">0</span>
+                        <span class="stat-label">حركة</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-value" id="finalTime">0</span>
+                        <span class="stat-label">ثانية</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 
-    <!-- Failure Screen -->
+    <!-- شاشة الفشل -->
     <div id="failureScreen" class="screen">
         <div class="result-container failure">
-            <div class="result-icon">✗</div>
-            <div class="result-title">ACCESS DENIED</div>
-            <div class="result-subtitle">Security breach detected</div>
+            <div class="result-background"></div>
+            <div class="failure-glitch"></div>
+            <div class="result-content">
+                <div class="result-icon">
+                    <div class="icon-glow"></div>
+                    ✗
+                </div>
+                <div class="result-title">فشل في تجاوز النظام</div>
+                <div class="result-subtitle">تم اكتشاف محاولة الاختراق</div>
+                <div class="failure-message">النظام محمي بتقنية متقدمة</div>
+            </div>
         </div>
     </div>
 
