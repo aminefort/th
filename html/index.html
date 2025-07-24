@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Security Terminal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Standby Screen -->
+    <div id="standbyScreen" class="screen active">
+        <div class="terminal-frame">
+            <div class="scan-lines"></div>
+            <div class="terminal-content">
+                <div class="logo">SECURE-NET</div>
+                <div class="status">SYSTEM STANDBY</div>
+                <div class="cursor-blink">_</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hack Game Screen -->
+    <div id="hackScreen" class="screen">
+        <div class="hack-container">
+            <div class="hack-header">
+                <div class="progress-container">
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progressBar"></div>
+                    </div>
+                    <div class="progress-text">BYPASSING SECURITY</div>
+                </div>
+            </div>
+
+            <div class="game-area">
+                <div class="towers-grid">
+                    <div class="tower" id="tower1" data-tower="0">
+                        <div class="tower-base"></div>
+                        <div class="tower-rod"></div>
+                    </div>
+                    <div class="tower" id="tower2" data-tower="1">
+                        <div class="tower-base"></div>
+                        <div class="tower-rod"></div>
+                    </div>
+                    <div class="tower" id="tower3" data-tower="2">
+                        <div class="tower-base"></div>
+                        <div class="tower-rod"></div>
+                    </div>
+                </div>
+
+                <div class="objective">
+                    MOVE ALL BLOCKS TO RIGHT TOWER
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Success Screen -->
+    <div id="successScreen" class="screen">
+        <div class="result-container success">
+            <div class="result-icon">✓</div>
+            <div class="result-title">ACCESS GRANTED</div>
+            <div class="result-subtitle">Security bypassed successfully</div>
+        </div>
+    </div>
+
+    <!-- Failure Screen -->
+    <div id="failureScreen" class="screen">
+        <div class="result-container failure">
+            <div class="result-icon">✗</div>
+            <div class="result-title">ACCESS DENIED</div>
+            <div class="result-subtitle">Security breach detected</div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
